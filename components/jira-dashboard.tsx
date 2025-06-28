@@ -1,6 +1,5 @@
 "use client";
 
- 
 import { useJiraStore } from "@/store/jira-store";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,8 +57,20 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useState, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, JSX, ClassAttributes, HTMLAttributes, Ref, SetStateAction, RefAttributes } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import {
+  useState,
+  ReactElement,
+  JSXElementConstructor,
+  ReactNode,
+  ReactPortal,
+  JSX,
+  ClassAttributes,
+  HTMLAttributes,
+  Ref,
+  SetStateAction,
+  RefAttributes,
+} from "react";
 import { Key } from "readline";
 
 export function JiraDashboard() {
@@ -444,7 +455,7 @@ export function JiraDashboard() {
                         );
                         return (
                           <div
-                            key={task.id}
+                            key={String(task.id)}
                             className="flex items-center gap-3 p-3 border rounded-lg"
                           >
                             {getTaskTypeIcon(task.type)}
@@ -548,7 +559,7 @@ export function JiraDashboard() {
                             | null
                             | undefined;
                         }) => (
-                          <SelectItem key={user.id} value={user.id}>
+                          <SelectItem key={String(user.id)} value={String(user.id ?? '')}>
                             {user.name}
                           </SelectItem>
                         )
@@ -821,7 +832,7 @@ export function JiraDashboard() {
                                                           | undefined
                                                       ) => (
                                                         <Badge
-                                                          key={label}
+                                                          key={typeof label === 'string' || typeof label === 'number' ? label : String(label)}
                                                           variant="secondary"
                                                           className="text-xs"
                                                         >
