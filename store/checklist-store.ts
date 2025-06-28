@@ -161,7 +161,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         attachments: [],
         comments: [],
         startedAt: new Date(),
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Development Environment Setup",
@@ -182,7 +182,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         attachments: [],
         comments: [],
 
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Database Design & Setup",
@@ -202,7 +202,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "API Development",
@@ -223,7 +223,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Frontend Component Library",
@@ -242,7 +242,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "State Management Implementation",
@@ -262,7 +262,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "User Authentication & Authorization",
@@ -283,7 +283,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Testing Implementation",
@@ -303,7 +303,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Performance Optimization",
@@ -323,7 +323,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Security Hardening",
@@ -343,7 +343,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Documentation & API Docs",
@@ -364,7 +364,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
       {
         title: "Deployment & DevOps",
@@ -385,7 +385,7 @@ const defaultTemplates: ChecklistTemplate[] = [
         startedAt: new Date(),
         attachments: [],
         comments: [],
-        dueDate: false,
+       dueDate: new Date("2024-07-01T00:00:00Z"),
       },
     ],
   },
@@ -1141,10 +1141,7 @@ export const useChecklistStore = create<ChecklistState & ChecklistActions>()(
         const percentage =
           total > 0 ? Math.round((completed / total) * 100) : 0;
         const overdue = project.items.filter(
-          (item) =>
-            item.dueDate &&
-            new item.dueDate < new Date() &&
-            !item.completed
+          (item) => item.dueDate && item.dueDate < new Date() && !item.completed
         ).length;
 
         return { total, completed, percentage, overdue };

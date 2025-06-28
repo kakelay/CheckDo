@@ -1,6 +1,6 @@
 export interface ChecklistItem {
   startedAt: Date;
-  dueDate?: boolean;
+  dueDate?: Date;
   id: string;
   title: string;
   description: string;
