@@ -82,6 +82,7 @@ import {
 import { TeamView } from "./TeamView";
 import { ActivityView } from "./ActivityView";
 import { TaskDetailModal } from "./TaskDetailModal";
+import { SettingsView } from "./SettingsView";
 
 export function EnhancedJiraDashboard() {
   const {
@@ -1485,7 +1486,7 @@ export function EnhancedJiraDashboard() {
           ) : activeView === "activity" ? (
             <ActivityView />
           ) : activeView === "settings" ? (
-            <Settings />
+            <SettingsView />
           ) : (
             <div className="flex items-center justify-center h-96">
               <div className="text-center">
